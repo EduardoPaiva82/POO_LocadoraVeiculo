@@ -2,6 +2,7 @@
 package br.com.LocadoraVeiculo.Telas.Cadastros;
 
 import br.com.LocadoraVeiculo.classes.Cliente;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import javax.swing.JOptionPane;
@@ -81,6 +82,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         btnLimpar = new javax.swing.JButton();
         jTxtAnosCNH = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Cadastro de Cliente");
@@ -93,6 +95,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         } catch (java.beans.PropertyVetoException e1) {
             e1.printStackTrace();
         }
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         try {
             jFormattedDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -101,6 +104,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         }
         jFormattedDataNascimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFormattedDataNascimento.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jFormattedDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 97, -1));
 
         vIdade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone seta.png"))); // NOI18N
         vIdade.setToolTipText("<html> <p>Após cadastrar data de nascimento<br> clique aqui para liberar os demais campos</p></html>");
@@ -109,6 +113,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 vIdadeMouseClicked(evt);
             }
         });
+        getContentPane().add(vIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 28, 27));
 
         jTextNomeCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTextNomeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -116,12 +121,15 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 jTextNomeClienteKeyReleased(evt);
             }
         });
+        getContentPane().add(jTextNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 397, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Nome Completo:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Data Nascimento");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         jFormattedCPF.setEditable(false);
         try {
@@ -135,12 +143,15 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 jFormattedCPFKeyReleased(evt);
             }
         });
+        getContentPane().add(jFormattedCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 128, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("CPF nº:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("CNH nº:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         jFormattedCNH.setEditable(false);
         try {
@@ -154,9 +165,11 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 jFormattedCNHKeyReleased(evt);
             }
         });
+        getContentPane().add(jFormattedCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 136, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setText("Celular nº:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
 
         jFormattedCelular.setEditable(false);
         try {
@@ -165,42 +178,55 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jFormattedCelular.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jFormattedCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 128, -1));
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 20)); // NOI18N
         jLabel6.setText("Cadastro de Cliente");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 246, 33));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setText("Endereço:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jTextEndereco.setEditable(false);
         jTextEndereco.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jTextEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 333, -1));
 
         jLabel8.setText("Complemento:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
 
         jTextComplemento.setEditable(false);
         jTextComplemento.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jTextComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 127, -1));
 
         jTextNCasa.setEditable(false);
         jTextNCasa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jTextNCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 63, -1));
 
         jLabel9.setText("Nº:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Bairro:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jTextBairro.setEditable(false);
         jTextBairro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jTextBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 283, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel11.setText("Cidade:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         jComboBoxCidade.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alto Alegre", "Amajarí", "Boa Vista", "Bonfim", "Cantá", "Caracaraí", "Caraoebe", "Iracema", "Mucajaí", "Normandia", "Pacaraima", "Rorainópolis", "São João da Baliza", "São Luiz", "Santa Maria do Boiaçu", "Uiramutã" }));
         jComboBoxCidade.setSelectedIndex(2);
         jComboBoxCidade.setToolTipText("");
         jComboBoxCidade.setEnabled(false);
+        getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 226, -1));
 
         jLabel12.setText("Data da Primeira CNH:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jFormattedDataPrimCNH.setEditable(false);
         try {
@@ -210,8 +236,10 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         }
         jFormattedDataPrimCNH.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFormattedDataPrimCNH.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jFormattedDataPrimCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 129, -1));
 
         jLabel13.setText("Data de Vencimento da CNH:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 219, -1));
 
         jFormattedDataVenciCNH.setEditable(false);
         try {
@@ -221,21 +249,26 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         }
         jFormattedDataVenciCNH.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFormattedDataVenciCNH.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        getContentPane().add(jFormattedDataVenciCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 129, -1));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel14.setText("Saldo Inicial");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
 
         jTextSaldoInicial.setEditable(false);
         jTextSaldoInicial.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTextSaldoInicial.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        getContentPane().add(jTextSaldoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 68, -1));
 
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setEnabled(false);
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 403, 110, 45));
 
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setEnabled(false);
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 403, 131, 45));
 
         btnLimpar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         btnLimpar.setText("Limpar");
@@ -244,172 +277,24 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 btnLimparActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 403, 110, 45));
 
         jTxtAnosCNH.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jTxtAnosCNH.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jTxtAnosCNH.setText("0");
+        getContentPane().add(jTxtAnosCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 36, -1));
 
         jLabel16.setText("ano(s)");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jFormattedDataPrimCNH, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(30, 30, 30)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jFormattedDataVenciCNH, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(55, 55, 55)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTxtAnosCNH, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel16)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel14)
-                                        .addComponent(jTextSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jFormattedCNH, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jFormattedDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(vIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextNCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedCNH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextNCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTxtAnosCNH)
-                        .addComponent(jLabel16))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedDataPrimCNH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedDataVenciCNH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
-        );
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeAddCliente.png"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, 50));
 
-        setBounds(100, 80, 617, 500);
+        setBounds(100, 80, 630, 500);
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("empty-statement")
+    
     private void vIdadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vIdadeMouseClicked
         
         
@@ -421,27 +306,34 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
          
          f.setDataNascimento(LocalDate.of(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia)));
          
-         int idade = Period.between(f.getDataNascimento(), LocalDate.now()).getYears(); //Fazendo o calculo da idade com a verificação de Periodo do getDatanascimento a data Atual
+       
+            
+          int idade = Period.between(f.getDataNascimento(), LocalDate.now()).getYears(); //Fazendo o calculo da idade com a verificação de Periodo do getDatanascimento a data Atual
          //o .getYears mostra o Periodo em Anos;
          //int idadeMeses = Period.between(f.getDataNascimento(), LocalDate.now()).getMonths();
          
          
          //Convertendo para String novamente para poder ser visto no JLabel
+         
+     
          vIdade.setText(Integer.toString(idade));
          //vIdadeMeses.setText(Integer.toString(idadeMeses));
          
          //Teste de Condição que testa se é maior de idade caso seja os campos podem ser editados caso contrário permanecem bloqueados;
-         if(idade >=18){
+         if(idade >=18 && idade <= 90){
             //habilitando os campos para o cadastro
             tornarCamposEditaveis();
          }else{
-             JOptionPane.showMessageDialog(null, "Ops!! Você têm "+ idade +" anos\nIdade Inválida!!");
+             
+            JOptionPane.showMessageDialog(null, "Ops!! Você têm "+ idade +" anos\nIdade Inválida!!");
              jFormattedDataNascimento.setText("");
-         }
+             
+       }  
          
-         
+        
     }//GEN-LAST:event_vIdadeMouseClicked
-
+        
+        
     private void jTextNomeClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeClienteKeyReleased
         //FAZ com que a jTextField ACEITE apenas Letras Maiusculas e Menusculas numeros não!
         String maiusculo = jTextNomeCliente.getText().toUpperCase(); // tudo Maiusculo;
@@ -481,6 +373,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

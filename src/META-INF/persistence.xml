@@ -3,9 +3,9 @@
   <persistence-unit name="POO_LocadoraVeiculoPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>ClassesDAO.Veiculos</class>
-    <class>ClassesDAO.Gerente</class>
-    <class>ClassesDAO.Funcionario</class>
     <class>ClassesDAO.Clientes</class>
+    <class>br.com.LocadoraVeiculo.classes.Gerente</class>
+    <class>br.com.LocadoraVeiculo.classes.Funcionario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/LocadoraCar?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -29,6 +29,7 @@ public class Gerente extends Funcionario{
     private String senhaLogin;
 
     //Constutor de Gerente
+    
     public Gerente(String nomeLogin, String senhaLogin, String nomeCompleto, LocalDate dataNascimento, String cpf, String celular) {
         super(nomeCompleto, dataNascimento, cpf, celular);
         this.nomeLogin = nomeLogin;

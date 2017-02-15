@@ -5,12 +5,12 @@
  */
 package br.com.LocadoraVeiculo.classes;
 
-import br.com.LocadoraVeiculo.Telas.Login.Tela_Login;
-
+import br.com.LocadoraVeiculo.Login.Tela_Login;
 /**
  *
  * @author edunativa
  */
+
 public class main {
 
     /**

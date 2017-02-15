@@ -68,7 +68,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
 
         btnCadCliente.setBackground(java.awt.Color.white);
         btnCadCliente.setForeground(java.awt.Color.darkGray);
-        btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone 54x54 cadastro Laranja.png"))); // NOI18N
+        btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 cadastro Laranja.png"))); // NOI18N
         btnCadCliente.setToolTipText("Cad. Cliente");
         btnCadCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCadCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -81,7 +81,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             }
         });
 
-        btnCadVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone 54x54 cadastro cliente.png"))); // NOI18N
+        btnCadVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 cadastro cliente.png"))); // NOI18N
         btnCadVeiculos.setToolTipText("Cad. Veículo");
         btnCadVeiculos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCadVeiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,7 +94,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorioClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone 54x54 relatorioCliente.png"))); // NOI18N
+        btnRelatorioClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 relatorioCliente.png"))); // NOI18N
         btnRelatorioClientes.setToolTipText("Relatório Cliente");
         btnRelatorioClientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRelatorioClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -107,7 +107,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorioVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone 54x54 relatorioVeiculo.png"))); // NOI18N
+        btnRelatorioVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 relatorioVeiculo.png"))); // NOI18N
         btnRelatorioVeiculos.setToolTipText("Relatório Veículo");
         btnRelatorioVeiculos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRelatorioVeiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -120,7 +120,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icone 54x54 Veiculos Laranja.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 Veiculos Laranja.png"))); // NOI18N
         jButton1.setToolTipText("Tabela Veiculos");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setMaximumSize(new java.awt.Dimension(54, 54));

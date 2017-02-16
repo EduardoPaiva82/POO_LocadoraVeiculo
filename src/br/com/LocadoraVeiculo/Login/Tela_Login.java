@@ -5,6 +5,9 @@
  */
 package br.com.LocadoraVeiculo.Login;
 
+import java.sql.*;
+import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
+
 import java.awt.BorderLayout;
 
 /**
@@ -12,12 +15,25 @@ import java.awt.BorderLayout;
  * @author edunativa
  */
 public class Tela_Login extends javax.swing.JFrame {
+    
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    
 
     /**
      * Creates new form Tela_Login
      */
     public Tela_Login() {
         initComponents();
+        conexao = ConexaoBD.conector();
+        
+        if(conexao != null){
+            txtIconeConectado.setEnabled(true);
+        }else{
+            txtIconeConectado.setEnabled(false);
+        }
+        
     }
 
     /**
@@ -33,6 +49,7 @@ public class Tela_Login extends javax.swing.JFrame {
         btn_EntrarCliente = new javax.swing.JButton();
         btn_EntrarGerente = new javax.swing.JButton();
         jPanelLogin = new javax.swing.JPanel();
+        txtIconeConectado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -86,6 +103,12 @@ public class Tela_Login extends javax.swing.JFrame {
         jPanel2.add(jPanelLogin);
         jPanelLogin.setBounds(20, 110, 400, 250);
 
+        txtIconeConectado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone_BancoDados 32x32.png"))); // NOI18N
+        txtIconeConectado.setText("Conectado");
+        txtIconeConectado.setEnabled(false);
+        jPanel2.add(txtIconeConectado);
+        txtIconeConectado.setBounds(450, 350, 120, 30);
+
         jLabel3.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(1, 1, 1));
         jLabel3.setText("Sistema de Locação de Veículo");
@@ -113,7 +136,7 @@ public class Tela_Login extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(600, 400));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,6 +208,7 @@ public class Tela_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelLogin;
+    private javax.swing.JLabel txtIconeConectado;
     private javax.swing.JLabel txtLogin;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,7 +1,12 @@
 
 package br.com.LocadoraVeiculo.Login;
 
+import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
+import br.com.LocadoraVeiculo.Telas.Tela_Area_Cliente;
 import br.com.LocadoraVeiculo.Telas.Tela_Area_de_Trab;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,11 +15,46 @@ import javax.swing.JOptionPane;
  */
 public class LoginGerente extends javax.swing.JPanel {
 
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    
+    public void logar(){
+        String SQL = "select * from Administrador where login= ? and senha= ?";
+        
+        try {
+            
+            pst = conexao.prepareStatement(SQL);
+            pst.setString(1, jTextUsuarioGerente.getText());
+            pst.setString(2, jPasswordGerente.getText());
+            //A linha abaixo executa a consulta acima no Banco de Dados;
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+              Tela_Area_de_Trab AreaTrab = new Tela_Area_de_Trab();
+                AreaTrab.setVisible(true); //abrindo o tela Pricipal
+                
+                                
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
+                jTextUsuarioGerente.setText("");
+                jPasswordGerente.setText("");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um Erro Aconteceu!\nNão foi possível Logar:  "+e);
+        
+        }
+        
+    }
+    
     /**
      * Creates new form LoginGerente
      */
     public LoginGerente() {
         initComponents();
+        conexao = ConexaoBD.conector();
     }
 
     /**
@@ -67,7 +107,7 @@ public class LoginGerente extends javax.swing.JPanel {
         jTextUsuarioGerente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTextUsuarioGerente.setMargin(new java.awt.Insets(0, 5, 0, 0));
         jPanelImagemFundo.add(jTextUsuarioGerente);
-        jTextUsuarioGerente.setBounds(150, 40, 189, 25);
+        jTextUsuarioGerente.setBounds(150, 40, 189, 29);
 
         jLabel2.setBackground(new java.awt.Color(238, 228, 217));
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -78,7 +118,7 @@ public class LoginGerente extends javax.swing.JPanel {
         jPasswordGerente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jPasswordGerente.setMargin(new java.awt.Insets(0, 5, 0, 0));
         jPanelImagemFundo.add(jPasswordGerente);
-        jPasswordGerente.setBounds(150, 80, 189, 27);
+        jPasswordGerente.setBounds(150, 80, 189, 29);
 
         jTxtEsqueceu.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jTxtEsqueceu.setForeground(new java.awt.Color(254, 58, 58));
@@ -114,21 +154,8 @@ public class LoginGerente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntEntrarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEntrarGerenteActionPerformed
-       
-         if(jTextUsuarioGerente.getText().equals("gerente") && jPasswordGerente.getText().equals("123")){
-            Tela_Area_de_Trab tela1 = new Tela_Area_de_Trab();
-            tela1.setVisible(true); //abrindo o tela Pricipal
-            //Limpando os campos apos a abertura da Tela Area de Trabalho
-            jTextUsuarioGerente.setText("");
-            jPasswordGerente.setText("");
-         
+       logar();
         
-         }else{
-             JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
-             //Limpando os campos apos aparecer a messagem de Erro;
-            jTextUsuarioGerente.setText("");
-            jPasswordGerente.setText("");
-         }
     }//GEN-LAST:event_bntEntrarGerenteActionPerformed
 
     private void jTxtEsqueceuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTxtEsqueceuMousePressed

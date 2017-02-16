@@ -6,20 +6,59 @@
 package br.com.LocadoraVeiculo.Login;
 
 import br.com.LocadoraVeiculo.Telas.Tela_Area_Cliente;
+import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import javax.swing.text.html.HTML;
+
 
 /**
  *
  * @author edunativa
  */
 public class LoginCliente extends javax.swing.JPanel {
-
+    
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    
+    
+    public void logar(){
+        String SQL = "select * from Usuario where nomeLogin= ? and senhaLogin= ?";
+        
+        try {
+            
+            pst = conexao.prepareStatement(SQL);
+            pst.setString(1, jTextUsuarioCliente.getText());
+            pst.setString(2, jPasswordCliente.getText());
+            //A linha abaixo executa a consulta acima no Banco de Dados;
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+                Tela_Area_Cliente areaCli = new Tela_Area_Cliente();
+                areaCli.setVisible(true); //abrindo o tela Pricipal
+                
+                                
+            }else{
+                
+                JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
+                jTextUsuarioCliente.setText("");
+                jPasswordCliente.setText("");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um Erro Aconteceu!\nNão foi possível Logar:  "+e);
+        
+        }
+        
+    }
     /**
      * Creates new form LoginCliente
      */
     public LoginCliente() {
         initComponents();
+        conexao = ConexaoBD.conector();
     }
 
     /**
@@ -48,7 +87,7 @@ public class LoginCliente extends javax.swing.JPanel {
         jPasswordCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jPasswordCliente.setMargin(new java.awt.Insets(0, 5, 0, 0));
         jPanel1.add(jPasswordCliente);
-        jPasswordCliente.setBounds(150, 80, 189, 27);
+        jPasswordCliente.setBounds(150, 80, 189, 29);
 
         bntEntrarCliente.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         bntEntrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeEntrarCliente.png"))); // NOI18N
@@ -67,7 +106,7 @@ public class LoginCliente extends javax.swing.JPanel {
         jTextUsuarioCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTextUsuarioCliente.setMargin(new java.awt.Insets(0, 5, 0, 0));
         jPanel1.add(jTextUsuarioCliente);
-        jTextUsuarioCliente.setBounds(150, 40, 189, 25);
+        jTextUsuarioCliente.setBounds(150, 40, 189, 29);
 
         jLabel1.setBackground(new java.awt.Color(238, 228, 217));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -105,20 +144,7 @@ public class LoginCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntEntrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEntrarClienteActionPerformed
-
-        if(jTextUsuarioCliente.getText().equals("cliente") && jPasswordCliente.getText().equals("admin")){
-            Tela_Area_Cliente telaCliente = new Tela_Area_Cliente();
-            telaCliente.setVisible(true); //abrindo o tela Pricipal
-            //Limpando os campos apos a abertura da Tela Area de Trabalho
-            jTextUsuarioCliente.setText("");
-            jPasswordCliente.setText("");
-
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
-            //Limpando os campos apos aparecer a messagem de Erro;
-            jTextUsuarioCliente.setText("");
-            jPasswordCliente.setText("");
-        }
+            logar();
     }//GEN-LAST:event_bntEntrarClienteActionPerformed
 
 

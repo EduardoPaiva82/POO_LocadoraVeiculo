@@ -54,18 +54,22 @@ public class Tela_Area_Cliente extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Veiculos");
 
+        openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"))); // NOI18N
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Categória A");
         fileMenu.add(openMenuItem);
 
+        saveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"))); // NOI18N
         saveMenuItem.setMnemonic('s');
         saveMenuItem.setText("Categória B");
         fileMenu.add(saveMenuItem);
 
+        saveAsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"))); // NOI18N
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Categória C");
         fileMenu.add(saveAsMenuItem);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"))); // NOI18N
         jMenuItem1.setText("Categória D");
         fileMenu.add(jMenuItem1);
 
@@ -74,7 +78,8 @@ public class Tela_Area_Cliente extends javax.swing.JFrame {
         editMenu.setMnemonic('e');
         editMenu.setText("Pagamento");
 
-        cutMenuItem.setMnemonic('t');
+        cutMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/InconePagVista.png"))); // NOI18N
         cutMenuItem.setText("À Vista");
         cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,10 +88,14 @@ public class Tela_Area_Cliente extends javax.swing.JFrame {
         });
         editMenu.add(cutMenuItem);
 
+        copyMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconePagDeb.png"))); // NOI18N
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("No Debito");
         editMenu.add(copyMenuItem);
 
+        pasteMenuItem.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        pasteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconePagCred.png"))); // NOI18N
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("No Crédito");
         editMenu.add(pasteMenuItem);

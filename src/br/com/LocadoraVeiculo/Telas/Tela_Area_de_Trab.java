@@ -9,6 +9,7 @@ package br.com.LocadoraVeiculo.Telas;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadFuncionario;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadVeiculo;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadastroCliente;
+import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -41,8 +42,9 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         btnCadVeiculos = new javax.swing.JButton();
         btnRelatorioClientes = new javax.swing.JButton();
         btnRelatorioVeiculos = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnTabVeiculos = new javax.swing.JButton();
         jLData = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         DesktopDoSistema = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastros_Clientes = new javax.swing.JMenu();
@@ -57,6 +59,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         setExtendedState(6);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("AreaTrabalho"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1024, 768));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -64,12 +67,14 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         });
 
         jPanel_Icones.setPreferredSize(new java.awt.Dimension(800, 60));
+        jPanel_Icones.setLayout(null);
 
-        btnCadCliente.setBackground(java.awt.Color.white);
+        btnCadCliente.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         btnCadCliente.setForeground(java.awt.Color.darkGray);
-        btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 cadastro Laranja.png"))); // NOI18N
+        btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeAddCliente.png"))); // NOI18N
         btnCadCliente.setToolTipText("Cad. Cliente");
-        btnCadCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCadCliente.setBorder(null);
+        btnCadCliente.setBorderPainted(false);
         btnCadCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCadCliente.setMaximumSize(new java.awt.Dimension(54, 54));
         btnCadCliente.setMinimumSize(new java.awt.Dimension(54, 54));
@@ -79,10 +84,14 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
                 btnCadClienteActionPerformed(evt);
             }
         });
+        jPanel_Icones.add(btnCadCliente);
+        btnCadCliente.setBounds(90, 0, 59, 54);
 
-        btnCadVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 cadastro cliente.png"))); // NOI18N
+        btnCadVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        btnCadVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/InconeAddCarro.png"))); // NOI18N
         btnCadVeiculos.setToolTipText("Cad. Veículo");
-        btnCadVeiculos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCadVeiculos.setBorder(null);
+        btnCadVeiculos.setBorderPainted(false);
         btnCadVeiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCadVeiculos.setMaximumSize(new java.awt.Dimension(54, 54));
         btnCadVeiculos.setMinimumSize(new java.awt.Dimension(54, 54));
@@ -92,10 +101,14 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
                 btnCadVeiculosActionPerformed(evt);
             }
         });
+        jPanel_Icones.add(btnCadVeiculos);
+        btnCadVeiculos.setBounds(170, 0, 60, 54);
 
-        btnRelatorioClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 relatorioCliente.png"))); // NOI18N
+        btnRelatorioClientes.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        btnRelatorioClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/InconeRelatorioCliente.png"))); // NOI18N
         btnRelatorioClientes.setToolTipText("Relatório Cliente");
-        btnRelatorioClientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRelatorioClientes.setBorder(null);
+        btnRelatorioClientes.setBorderPainted(false);
         btnRelatorioClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRelatorioClientes.setMaximumSize(new java.awt.Dimension(54, 54));
         btnRelatorioClientes.setMinimumSize(new java.awt.Dimension(54, 54));
@@ -105,10 +118,14 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
                 btnRelatorioClientesActionPerformed(evt);
             }
         });
+        jPanel_Icones.add(btnRelatorioClientes);
+        btnRelatorioClientes.setBounds(260, 0, 54, 54);
 
-        btnRelatorioVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 relatorioVeiculo.png"))); // NOI18N
+        btnRelatorioVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        btnRelatorioVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeRelatorioVeiculo.png"))); // NOI18N
         btnRelatorioVeiculos.setToolTipText("Relatório Veículo");
-        btnRelatorioVeiculos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRelatorioVeiculos.setBorder(null);
+        btnRelatorioVeiculos.setBorderPainted(false);
         btnRelatorioVeiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRelatorioVeiculos.setMaximumSize(new java.awt.Dimension(54, 54));
         btnRelatorioVeiculos.setMinimumSize(new java.awt.Dimension(54, 54));
@@ -118,59 +135,38 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
                 btnRelatorioVeiculosActionPerformed(evt);
             }
         });
+        jPanel_Icones.add(btnRelatorioVeiculos);
+        btnRelatorioVeiculos.setBounds(340, 0, 57, 54);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/Icone 54x54 Veiculos Laranja.png"))); // NOI18N
-        jButton1.setToolTipText("Tabela Veiculos");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setMaximumSize(new java.awt.Dimension(54, 54));
-        jButton1.setMinimumSize(new java.awt.Dimension(54, 54));
-        jButton1.setPreferredSize(new java.awt.Dimension(54, 54));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTabVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        btnTabVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeTabVeiculo.png"))); // NOI18N
+        btnTabVeiculos.setToolTipText("Tabela Veiculos");
+        btnTabVeiculos.setBorder(null);
+        btnTabVeiculos.setBorderPainted(false);
+        btnTabVeiculos.setMaximumSize(new java.awt.Dimension(54, 54));
+        btnTabVeiculos.setMinimumSize(new java.awt.Dimension(54, 54));
+        btnTabVeiculos.setPreferredSize(new java.awt.Dimension(54, 54));
+        btnTabVeiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTabVeiculosActionPerformed(evt);
             }
         });
+        jPanel_Icones.add(btnTabVeiculos);
+        btnTabVeiculos.setBounds(420, 0, 54, 54);
 
         jLData.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLData.setForeground(new java.awt.Color(204, 0, 0));
         jLData.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLData.setLabelFor(jLData);
         jLData.setText("Data:");
+        jPanel_Icones.add(jLData);
+        jLData.setBounds(669, 24, 298, 30);
 
-        javax.swing.GroupLayout jPanel_IconesLayout = new javax.swing.GroupLayout(jPanel_Icones);
-        jPanel_Icones.setLayout(jPanel_IconesLayout);
-        jPanel_IconesLayout.setHorizontalGroup(
-            jPanel_IconesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_IconesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCadCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCadVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRelatorioClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnRelatorioVeiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(307, 307, 307)
-                .addComponent(jLData, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(316, 316, 316))
-        );
-        jPanel_IconesLayout.setVerticalGroup(
-            jPanel_IconesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_IconesLayout.createSequentialGroup()
-                .addGroup(jPanel_IconesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel_IconesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel_IconesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCadCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCadVeiculos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRelatorioClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRelatorioVeiculos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 9, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Imagens/barraParaMenu.png"))); // NOI18N
+        jPanel_Icones.add(jLabel1);
+        jLabel1.setBounds(0, -10, 1024, 70);
 
+        DesktopDoSistema.setForeground(java.awt.SystemColor.desktop);
         DesktopDoSistema.setMaximumSize(new java.awt.Dimension(1024, 700));
         DesktopDoSistema.setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -182,7 +178,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         );
         DesktopDoSistemaLayout.setVerticalGroup(
             DesktopDoSistemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 737, Short.MAX_VALUE)
         );
 
         jMenuBar1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -240,13 +236,13 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(DesktopDoSistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_Icones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1283, Short.MAX_VALUE)
+            .addComponent(jPanel_Icones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel_Icones, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DesktopDoSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -285,15 +281,21 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
     private void btnCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadClienteActionPerformed
             Tela_CadastroCliente Cadcliente = new Tela_CadastroCliente();
             DesktopDoSistema.add(Cadcliente);
-            if(!Cadcliente.isVisible()){
-                 Cadcliente.setVisible(true);
-                 btnCadCliente.setEnabled(false);
-                 btnCadVeiculos.setEnabled(true);
-                 btnRelatorioClientes.setEnabled(true);
-                 btnRelatorioVeiculos.setEnabled(true);
-            }else{
-                Cadcliente.dispose();
+            if(!Cadcliente.isVisible() && Cadcliente.isClosable()){
+                
                
+                Cadcliente.setVisible(true);
+                btnCadCliente.setEnabled(false);
+                btnCadVeiculos.setEnabled(true);
+                btnRelatorioClientes.setEnabled(true);
+                btnRelatorioVeiculos.setEnabled(true);
+                btnTabVeiculos.setEnabled(true);
+                 
+            }else{
+                
+                this.dispose();
+               
+                
             }
                 
                
@@ -361,6 +363,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             btnCadVeiculos.setEnabled(true);
             btnRelatorioClientes.setEnabled(true);
             btnRelatorioVeiculos.setEnabled(false);
+            btnTabVeiculos.setEnabled(true);
         }
     }//GEN-LAST:event_btnRelatorioVeiculosActionPerformed
 
@@ -374,15 +377,26 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
             btnCadVeiculos.setEnabled(true);
             btnRelatorioClientes.setEnabled(true);
             btnRelatorioVeiculos.setEnabled(true);
+            btnTabVeiculos.setEnabled(true);
+            
             
         }
     }//GEN-LAST:event_jMenuItemPesqClienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTabVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabVeiculosActionPerformed
         Tela_Area_Cliente telaCliente = new Tela_Area_Cliente();
         telaCliente.setVisible(true);
+        if(telaCliente.isVisible()){
+            telaCliente.setVisible(true);
+            btnCadCliente.setEnabled(true);
+            btnCadVeiculos.setEnabled(true);
+            btnRelatorioClientes.setEnabled(true);
+            btnRelatorioVeiculos.setEnabled(true);
+            btnTabVeiculos.setEnabled(false);
+            
+        }
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTabVeiculosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,8 +439,9 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
     private javax.swing.JButton btnCadVeiculos;
     private javax.swing.JButton btnRelatorioClientes;
     private javax.swing.JButton btnRelatorioVeiculos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTabVeiculos;
     private javax.swing.JLabel jLData;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros_Clientes;
     private javax.swing.JMenuItem jMenuItem1;

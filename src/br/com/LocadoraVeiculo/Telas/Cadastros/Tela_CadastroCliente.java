@@ -1,7 +1,10 @@
-
 package br.com.LocadoraVeiculo.Telas.Cadastros;
 
+import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
 import br.com.LocadoraVeiculo.classes.Cliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
@@ -12,33 +15,79 @@ import javax.swing.JOptionPane;
  * @author edunativa
  */
 public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
-   
+
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
     /**
      * Creates new form Tela_CadastroCliente
      */
-    public void tornarCamposEditaveis(){
-            jFormattedCPF.setEditable(true);
-            jFormattedCNH.setEditable(true);
-            jFormattedCelular.setEditable(true);;
-            jTextEndereco.setEditable(true);
-            jTextComplemento.setEditable(true);
-            jTextNCasa.setEditable(true);
-            jTextBairro.setEditable(true);
-            jComboBoxCidade.setEnabled(true);
-            jComboBoxCidade.setEditable(true);
-            jFormattedDataPrimCNH.setEditable(true);
-            jFormattedDataVenciCNH.setEditable(true);
-            jTextSaldoInicial.setEditable(true);
-            //Mostar os Botões Salvar e Cancelar;
-            btnSalvar.setEnabled(true);
-            btnCancelar.setEnabled(true);
-            }
-    
-    
-    public Tela_CadastroCliente() {
-        
-        initComponents();
+    public void tornarCamposEditaveis() {
+        jFormattedCPF.setEditable(true);
+        jFormattedCNH.setEditable(true);
+        jFormattedCelular.setEditable(true);;
+        jTextEndereco.setEditable(true);
+        jTextComplemento.setEditable(true);
+        jTextNCasa.setEditable(true);
+        jTextBairro.setEditable(true);
+        jComboBoxCidade.setEnabled(true);
+        jComboBoxCidade.setEditable(true);
+        jFormattedDataPrimCNH.setEditable(true);
+        jFormattedDataVenciCNH.setEditable(true);
+        jTextSaldoInicial.setEditable(true);
+        //Mostar os Botões Salvar e Cancelar;
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
     }
+
+    public Tela_CadastroCliente() {
+
+        initComponents();
+        conexao = ConexaoBD.conector();
+    }
+
+    public void addCliente() {
+        String sql = "insert into Clientes(nomeCliente, dataNascimento, cpf, celular, endereco, nCNH, dataVencimento, dataPrimCNH)Values(?,?,?,?,?,?,?,?)";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, jTextNomeCliente.getText());
+            pst.setString(2, jFormattedDataNascimento.getText());
+            pst.setString(3, jFormattedCPF.getText());
+            pst.setString(4, jFormattedCelular.getText());
+            pst.setString(5, jTextEndereco.getText());
+            pst.setString(6, jFormattedCNH.getText());
+            pst.setString(7, jFormattedDataPrimCNH.getText());
+            pst.setString(8, jFormattedDataVenciCNH.getText());
+
+            //caso os campos estiverem vazios isEmpty efeiturar o bloco de código abaixo;
+            if (jTextNomeCliente.getText().isEmpty() || jFormattedDataNascimento.getText().isEmpty() || jFormattedCPF.getText().isEmpty() || jFormattedCelular.getText().isEmpty() || jFormattedCNH.getText().isEmpty() || jFormattedDataPrimCNH.getText().isEmpty() || jFormattedDataVenciCNH.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha os Campos Obrigatórios!!!");
+
+            } else {
+                //a linha abaixo atualiza a tabela Clientes com os dados do Formulário de cadastro;
+                //e Mostrar um janela de Dialogo dizendo que foi cadastrado com sucesso;
+                int adicionado = pst.executeUpdate();
+
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "Cliente Cadastrado\nCom Sucesso!!");
+                    //Limpar o Formulario ao clicar em Salvar
+                    jTextNomeCliente.setText(null);
+                    jFormattedDataNascimento.setText(null);
+                    jFormattedCPF.setText(null);
+                    jFormattedCelular.setText(null);
+                    jTextEndereco.setText(null);
+                    jFormattedCNH.setText(null);
+                    jFormattedDataPrimCNH.setText(null);
+                    jFormattedDataVenciCNH.setText(null);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ops Erro ao Cadastrar Cliente:\n" + e);
+        }
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,6 +132,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         jTxtAnosCNH = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Cadastro de Cliente");
@@ -124,11 +174,11 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jTextNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 397, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel1.setText("Nome Completo:");
+        jLabel1.setText("*Nome Completo:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel2.setText("Data Nascimento");
+        jLabel2.setText("*Data Nascimento");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         jFormattedCPF.setEditable(false);
@@ -146,11 +196,11 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jFormattedCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 128, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel3.setText("CPF nº:");
+        jLabel3.setText("*CPF nº:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setText("CNH nº:");
+        jLabel4.setText("*CNH nº:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         jFormattedCNH.setEditable(false);
@@ -168,8 +218,8 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jFormattedCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 136, -1));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel5.setText("Celular nº:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
+        jLabel5.setText("*Celular nº:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
         jFormattedCelular.setEditable(false);
         try {
@@ -178,7 +228,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jFormattedCelular.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        getContentPane().add(jFormattedCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 128, -1));
+        getContentPane().add(jFormattedCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 140, -1));
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 20)); // NOI18N
         jLabel6.setText("Cadastro de Cliente");
@@ -208,7 +258,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel10.setText("Bairro:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         jTextBairro.setEditable(false);
         jTextBairro.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -216,7 +266,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel11.setText("Cidade:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
 
         jComboBoxCidade.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alto Alegre", "Amajarí", "Boa Vista", "Bonfim", "Cantá", "Caracaraí", "Caraoebe", "Iracema", "Mucajaí", "Normandia", "Pacaraima", "Rorainópolis", "São João da Baliza", "São Luiz", "Santa Maria do Boiaçu", "Uiramutã" }));
@@ -225,7 +275,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         jComboBoxCidade.setEnabled(false);
         getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 226, -1));
 
-        jLabel12.setText("Data da Primeira CNH:");
+        jLabel12.setText("*Data da Primeira CNH:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jFormattedDataPrimCNH.setEditable(false);
@@ -238,7 +288,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         jFormattedDataPrimCNH.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         getContentPane().add(jFormattedDataPrimCNH, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 129, -1));
 
-        jLabel13.setText("Data de Vencimento da CNH:");
+        jLabel13.setText("*Data de Vencimento da CNH:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 219, -1));
 
         jFormattedDataVenciCNH.setEditable(false);
@@ -263,11 +313,21 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setEnabled(false);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 403, 110, 45));
 
         btnCancelar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setEnabled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 403, 131, 45));
 
         btnLimpar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -290,50 +350,48 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeAddCliente.png"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, 50));
 
+        jLabel17.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel17.setText("* Campos Obrigatório");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
         setBounds(100, 80, 630, 500);
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("empty-statement")
-    
+
     private void vIdadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vIdadeMouseClicked
-        
-        
+
         Cliente f = new Cliente();
-          //formato da data: 00/00/0000
-         String dia = jFormattedDataNascimento.getText().substring(0 , 2);
-         String mes = jFormattedDataNascimento.getText().substring(3, 5);
-         String ano = jFormattedDataNascimento.getText().substring(6, 10);
-         
-         f.setDataNascimento(LocalDate.of(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia)));
-         
-       
-            
-          int idade = Period.between(f.getDataNascimento(), LocalDate.now()).getYears(); //Fazendo o calculo da idade com a verificação de Periodo do getDatanascimento a data Atual
-         //o .getYears mostra o Periodo em Anos;
-         //int idadeMeses = Period.between(f.getDataNascimento(), LocalDate.now()).getMonths();
-         
-         
-         //Convertendo para String novamente para poder ser visto no JLabel
-         
-     
-         vIdade.setText(Integer.toString(idade));
-         //vIdadeMeses.setText(Integer.toString(idadeMeses));
-         
-         //Teste de Condição que testa se é maior de idade caso seja os campos podem ser editados caso contrário permanecem bloqueados;
-         if(idade >=18 && idade <= 90){
+        //formato da data: 00/00/0000
+        String dia = jFormattedDataNascimento.getText().substring(0, 2);
+        String mes = jFormattedDataNascimento.getText().substring(3, 5);
+        String ano = jFormattedDataNascimento.getText().substring(6, 10);
+
+        f.setDataNascimento(LocalDate.of(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia)));
+
+        int idade = Period.between(f.getDataNascimento(), LocalDate.now()).getYears(); //Fazendo o calculo da idade com a verificação de Periodo do getDatanascimento a data Atual
+        //o .getYears mostra o Periodo em Anos;
+        //int idadeMeses = Period.between(f.getDataNascimento(), LocalDate.now()).getMonths();
+
+        //Convertendo para String novamente para poder ser visto no JLabel
+        vIdade.setText(Integer.toString(idade));
+        //vIdadeMeses.setText(Integer.toString(idadeMeses));
+
+        //Teste de Condição que testa se é maior de idade caso seja os campos podem ser editados caso contrário permanecem bloqueados;
+        if (idade >= 18 && idade <= 90) {
             //habilitando os campos para o cadastro
             tornarCamposEditaveis();
-         }else{
-             
-            JOptionPane.showMessageDialog(null, "Ops!! Você têm "+ idade +" anos\nIdade Inválida!!");
-             jFormattedDataNascimento.setText("");
-             
-       }  
-         
-        
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Ops!! Você têm " + idade + " anos\nIdade Inválida!!");
+            jFormattedDataNascimento.setText("");
+
+        }
+
+
     }//GEN-LAST:event_vIdadeMouseClicked
-        
-        
+
+
     private void jTextNomeClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNomeClienteKeyReleased
         //FAZ com que a jTextField ACEITE apenas Letras Maiusculas e Menusculas numeros não!
         String maiusculo = jTextNomeCliente.getText().toUpperCase(); // tudo Maiusculo;
@@ -342,20 +400,36 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextNomeClienteKeyReleased
 
     private void jFormattedCPFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedCPFKeyReleased
-       //FAZ com que o campo CPF receba apenas numeros na hora da digitação;
-        jFormattedCPF.setText(jFormattedCPF.getText().replaceAll("[^0-9]" ,""));
+        //FAZ com que o campo CPF receba apenas numeros na hora da digitação;
+        jFormattedCPF.setText(jFormattedCPF.getText().replaceAll("[^0-9]", ""));
     }//GEN-LAST:event_jFormattedCPFKeyReleased
 
     private void jFormattedCNHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedCNHKeyReleased
-        jFormattedCNH.setText(jFormattedCNH.getText().replaceAll("[^0-9]" ,""));
+        jFormattedCNH.setText(jFormattedCNH.getText().replaceAll("[^0-9]", ""));
     }//GEN-LAST:event_jFormattedCNHKeyReleased
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
+        //Limpar os campos da Tabela cadastro;
+        jTextNomeCliente.setText(null);
+        jFormattedDataNascimento.setText(null);
+        jFormattedCPF.setText(null);
+        jFormattedCelular.setText(null);
+        jTextEndereco.setText(null);
+        jFormattedCNH.setText(null);
+        jFormattedDataPrimCNH.setText(null);
+        jFormattedDataVenciCNH.setText(null);
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    
-    
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        addCliente();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnLimpar;
@@ -375,6 +449,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

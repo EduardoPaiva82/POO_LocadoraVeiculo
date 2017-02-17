@@ -158,11 +158,8 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnCadCliente">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f1" id="Button.light" palette="3" red="f2" type="palette"/>
-            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeAddCliente.png"/>
@@ -196,9 +193,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCadVeiculos">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f1" id="Button.light" palette="3" red="f2" type="palette"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/InconeAddCarro.png"/>
             </Property>
@@ -231,9 +225,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRelatorioClientes">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f1" id="Button.light" palette="3" red="f2" type="palette"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/InconeRelatorioCliente.png"/>
             </Property>
@@ -266,9 +257,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRelatorioVeiculos">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f1" id="Button.light" palette="3" red="f2" type="palette"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeRelatorioVeiculo.png"/>
             </Property>
@@ -301,9 +289,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnTabVeiculos">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f1" id="Button.light" palette="3" red="f2" type="palette"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeTabVeiculo.png"/>
             </Property>
@@ -359,7 +344,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="-10" width="1024" height="70"/>
+              <AbsoluteConstraints x="0" y="0" width="1024" height="70"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -69,8 +69,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         jPanel_Icones.setPreferredSize(new java.awt.Dimension(800, 60));
         jPanel_Icones.setLayout(null);
 
-        btnCadCliente.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        btnCadCliente.setForeground(java.awt.Color.darkGray);
+        btnCadCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCadCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeAddCliente.png"))); // NOI18N
         btnCadCliente.setToolTipText("Cad. Cliente");
         btnCadCliente.setBorder(null);
@@ -87,7 +86,6 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         jPanel_Icones.add(btnCadCliente);
         btnCadCliente.setBounds(90, 0, 59, 54);
 
-        btnCadVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         btnCadVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/InconeAddCarro.png"))); // NOI18N
         btnCadVeiculos.setToolTipText("Cad. Veículo");
         btnCadVeiculos.setBorder(null);
@@ -104,7 +102,6 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         jPanel_Icones.add(btnCadVeiculos);
         btnCadVeiculos.setBounds(170, 0, 60, 54);
 
-        btnRelatorioClientes.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         btnRelatorioClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/InconeRelatorioCliente.png"))); // NOI18N
         btnRelatorioClientes.setToolTipText("Relatório Cliente");
         btnRelatorioClientes.setBorder(null);
@@ -121,7 +118,6 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         jPanel_Icones.add(btnRelatorioClientes);
         btnRelatorioClientes.setBounds(260, 0, 54, 54);
 
-        btnRelatorioVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         btnRelatorioVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeRelatorioVeiculo.png"))); // NOI18N
         btnRelatorioVeiculos.setToolTipText("Relatório Veículo");
         btnRelatorioVeiculos.setBorder(null);
@@ -138,7 +134,6 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         jPanel_Icones.add(btnRelatorioVeiculos);
         btnRelatorioVeiculos.setBounds(340, 0, 57, 54);
 
-        btnTabVeiculos.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         btnTabVeiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeTabVeiculo.png"))); // NOI18N
         btnTabVeiculos.setToolTipText("Tabela Veiculos");
         btnTabVeiculos.setBorder(null);
@@ -164,7 +159,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Imagens/barraParaMenu.png"))); // NOI18N
         jPanel_Icones.add(jLabel1);
-        jLabel1.setBounds(0, -10, 1024, 70);
+        jLabel1.setBounds(0, 0, 1024, 70);
 
         DesktopDoSistema.setForeground(java.awt.SystemColor.desktop);
         DesktopDoSistema.setMaximumSize(new java.awt.Dimension(1024, 700));

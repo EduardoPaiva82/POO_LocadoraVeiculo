@@ -2,7 +2,6 @@
 package br.com.LocadoraVeiculo.Login;
 
 import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
-import br.com.LocadoraVeiculo.Telas.Tela_Area_Cliente;
 import br.com.LocadoraVeiculo.Telas.Tela_Area_de_Trab;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

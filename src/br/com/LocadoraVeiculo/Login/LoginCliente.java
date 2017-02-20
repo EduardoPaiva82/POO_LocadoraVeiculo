@@ -7,52 +7,51 @@ package br.com.LocadoraVeiculo.Login;
 
 import br.com.LocadoraVeiculo.Telas.Tela_Area_Cliente;
 import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author edunativa
  */
 public class LoginCliente extends javax.swing.JPanel {
-    
+
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    
-    public void logar(){
+
+    public void logar() {
         String SQL = "select * from Usuario where nomeLogin= ? and senhaLogin= ?";
-        
+
         try {
-            
+
             pst = conexao.prepareStatement(SQL);
             pst.setString(1, jTextUsuarioCliente.getText());
             pst.setString(2, jPasswordCliente.getText());
             //A linha abaixo executa a consulta acima no Banco de Dados;
             rs = pst.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 Tela_Area_Cliente areaCli = new Tela_Area_Cliente();
                 areaCli.setVisible(true); //abrindo o tela Pricipal
-                
-                                
-            }else{
-                
+
+            } else {
+
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
                 jTextUsuarioCliente.setText("");
                 jPasswordCliente.setText("");
-                
+
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Um Erro Aconteceu!\nNão foi possível Logar:  "+e);
-        
+            JOptionPane.showMessageDialog(null, "Um Erro Aconteceu!\nNão foi possível Logar:  " + e);
+
         }
-        
+
     }
+
     /**
      * Creates new form LoginCliente
      */
@@ -86,6 +85,11 @@ public class LoginCliente extends javax.swing.JPanel {
 
         jPasswordCliente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jPasswordCliente.setMargin(new java.awt.Insets(0, 5, 0, 0));
+        jPasswordCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordClienteKeyPressed(evt);
+            }
+        });
         jPanel1.add(jPasswordCliente);
         jPasswordCliente.setBounds(150, 80, 189, 29);
 
@@ -117,6 +121,11 @@ public class LoginCliente extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 58, 58));
         jLabel3.setText("*Esqueci a minha Senha");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
         jPanel1.add(jLabel3);
         jLabel3.setBounds(150, 220, 118, 13);
 
@@ -144,8 +153,30 @@ public class LoginCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntEntrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEntrarClienteActionPerformed
-            logar();
+        logar();
     }//GEN-LAST:event_bntEntrarClienteActionPerformed
+
+    //Metodo para o Usuário entrar no Sistema apos digitar a senha apertar a tecla ENTER
+    private void jPasswordClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordClienteKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) { //Se aperta a tecla Enter irá tentar Logar
+            logar();
+        }
+    }//GEN-LAST:event_jPasswordClienteKeyPressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        
+        String titulo = "Recuperar Senha";
+        String menssagem = "Sr Cliente. Caso queira cadastrar uma nova senha\nNão têm problema, Clique em SIM!";
+         
+        int opcao = JOptionPane.showConfirmDialog(null,menssagem, titulo ,JOptionPane.YES_OPTION);
+         
+         if(opcao == JOptionPane.YES_OPTION){
+             System.out.println("Parabéns Você Disse SIM para Cadastrar uma Novo Login e Senha!!!");
+             RecuperarSenha g = new RecuperarSenha();
+             g.setVisible(true);
+         }
+        
+    }//GEN-LAST:event_jLabel3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

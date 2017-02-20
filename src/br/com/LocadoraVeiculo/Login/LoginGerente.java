@@ -3,6 +3,7 @@ package br.com.LocadoraVeiculo.Login;
 
 import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
 import br.com.LocadoraVeiculo.Telas.Tela_Area_de_Trab;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -116,6 +117,11 @@ public class LoginGerente extends javax.swing.JPanel {
 
         jPasswordGerente.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jPasswordGerente.setMargin(new java.awt.Insets(0, 5, 0, 0));
+        jPasswordGerente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordGerenteKeyPressed(evt);
+            }
+        });
         jPanelImagemFundo.add(jPasswordGerente);
         jPasswordGerente.setBounds(150, 80, 189, 29);
 
@@ -161,12 +167,20 @@ public class LoginGerente extends javax.swing.JPanel {
         String titulo = "Recuperar Senha";
         String menssagem = "Caso você tanha esquecido a sua senha ou login\nNão têm problema, clique em umas das opções abaixo!";
          
-        int opcao = JOptionPane.showConfirmDialog(null,menssagem, titulo ,JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null,menssagem, titulo ,JOptionPane.YES_OPTION);
          
          if(opcao == JOptionPane.YES_OPTION){
-             JOptionPane.showMessageDialog(null, "Você Conseguiu!");
+             System.out.println("Você Conseguiu!!!");
+             
          }
     }//GEN-LAST:event_jTxtEsqueceuMousePressed
+
+    //Metodo irá fazer o usuário logar ao preencher login e senha e apertar ENTER
+    private void jPasswordGerenteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordGerenteKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){ //Apos Digitar a Senha no campo aperte ENTER
+            logar(); //Loga No Sistema procurando no Banco de Dados!
+        }
+    }//GEN-LAST:event_jPasswordGerenteKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

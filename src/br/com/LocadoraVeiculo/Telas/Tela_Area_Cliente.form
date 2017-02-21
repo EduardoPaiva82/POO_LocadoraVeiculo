@@ -16,7 +16,7 @@
             <Property name="text" type="java.lang.String" value="Veiculos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="openMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="catA">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"/>
@@ -24,8 +24,11 @@
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Categ&#xf3;ria A"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="catAActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="saveMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="catB">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"/>
@@ -34,7 +37,7 @@
                 <Property name="text" type="java.lang.String" value="Categ&#xf3;ria B"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="saveAsMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="catC">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"/>
@@ -43,12 +46,20 @@
                 <Property name="text" type="java.lang.String" value="Categ&#xf3;ria C"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="catD">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Categ&#xf3;ria D"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="catE">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeSetapraDireita.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Categ&#xf3;ria E"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -69,9 +80,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#xc0; Vista"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cutMenuItemActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="copyMenuItem">
               <Properties>
@@ -107,13 +115,16 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="contentMenuItem">
               <Properties>
-                <Property name="mnemonic" type="int" value="99"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/com/LocadoraVeiculo/Icones/IconeAtendente.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="70"/>
                 <Property name="text" type="java.lang.String" value="Fale Conosco"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
               <Properties>
-                <Property name="mnemonic" type="int" value="97"/>
+                <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Nossos Termos"/>
               </Properties>
             </MenuItem>

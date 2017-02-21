@@ -9,9 +9,11 @@ package br.com.LocadoraVeiculo.Telas;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadFuncionario;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadVeiculo;
 import br.com.LocadoraVeiculo.Telas.Cadastros.Tela_CadastroCliente;
+import java.awt.Dimension;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -272,9 +274,17 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
               
     }//GEN-LAST:event_formWindowOpened
 
+    private void centralizaJInternalFrame(JInternalFrame frame) {
+        Dimension desktopSize = DesktopDoSistema.getSize();
+        Dimension jInternalFrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+    
     private void btnCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadClienteActionPerformed
             Tela_CadastroCliente Cadcliente = new Tela_CadastroCliente();
             DesktopDoSistema.add(Cadcliente);
+            centralizaJInternalFrame(Cadcliente);
             if(!Cadcliente.isVisible() && Cadcliente.isClosable()){
                 
                
@@ -301,6 +311,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
     private void btnCadVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadVeiculosActionPerformed
         Tela_CadVeiculo CadVeiculo = new Tela_CadVeiculo();
             DesktopDoSistema.add(CadVeiculo);
+            centralizaJInternalFrame(CadVeiculo);
             if(!CadVeiculo.isVisible()){
                  CadVeiculo.setVisible(true);
                  btnCadVeiculos.setEnabled(false);
@@ -318,6 +329,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
     private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
                  Tela_CadFuncionario CadFunc = new Tela_CadFuncionario();
                  DesktopDoSistema.add(CadFunc);
+                 centralizaJInternalFrame(CadFunc);
                  if(!CadFunc.isVisible()){
                      CadFunc.setVisible(true);
                         btnCadCliente.setEnabled(true);
@@ -335,6 +347,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
        Tela_RelatorioCliente RelatorioCliente;
         RelatorioCliente = new Tela_RelatorioCliente();
         DesktopDoSistema.add(RelatorioCliente);
+        centralizaJInternalFrame(RelatorioCliente);
         if(RelatorioCliente.isVisible()){
             RelatorioCliente.setVisible(true);
             btnCadCliente.setEnabled(true);
@@ -351,6 +364,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         Tela_RelatorioVeiculo RelatorioVeiculo;
         RelatorioVeiculo = new Tela_RelatorioVeiculo();
         DesktopDoSistema.add(RelatorioVeiculo);
+        centralizaJInternalFrame(RelatorioVeiculo);
         if(RelatorioVeiculo.isVisible()){
             RelatorioVeiculo.setVisible(true);
             btnCadCliente.setEnabled(true);
@@ -365,6 +379,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
         Tela_RelatorioCliente RelatorioCliente;
         RelatorioCliente = new Tela_RelatorioCliente();
         DesktopDoSistema.add(RelatorioCliente);
+        centralizaJInternalFrame(RelatorioCliente);
         if(RelatorioCliente.isVisible()){
             RelatorioCliente.setVisible(true);
             btnCadCliente.setEnabled(true);
@@ -380,6 +395,7 @@ public class Tela_Area_de_Trab extends javax.swing.JFrame {
     private void btnTabVeiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabVeiculosActionPerformed
         Tela_Area_Cliente telaCliente = new Tela_Area_Cliente();
         telaCliente.setVisible(true);
+        telaCliente.setLocationRelativeTo(null);
         if(telaCliente.isVisible()){
             telaCliente.setVisible(true);
             btnCadCliente.setEnabled(true);

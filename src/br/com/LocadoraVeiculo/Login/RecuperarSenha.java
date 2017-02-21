@@ -32,7 +32,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
 
     //Metodo para Consultar o CPF do Cliente para poder o mesmo poder fazer uma nova senha;
     public void Consultar() {
-        String sql = "select * from Usuario where Cpf= ?"; //Pesquisa no campo CPF da tabela do Banco de Dados;
+        String sql = "select * from Usuario where CPF= ?"; //Pesquisa no campo CPF da tabela do Banco de Dados;
 
         try {
 
@@ -64,7 +64,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
 
     //Metodo para Alterar o senha do Cliente no Banco de dados;
     public void AlterarSenha() {
-        String sql = "update Usuario set nomeLogin=?, senhaLogin=? where nomeLogin=?";
+        String sql = "update Usuario set senhaLogin=? where CPF=?";
         try {
             pst = conexao.prepareStatement(sql);
            
@@ -76,9 +76,10 @@ public class RecuperarSenha extends javax.swing.JFrame {
             } else {
                          
                 
-                pst.setString(1, jTextFieldNomeUsuario.getText());
-                pst.setString(2, jPasswordNovaSenha.getText());
-                pst.setString(3, jTextFieldNomeUsuario.getText());
+                
+                pst.setString(1, jPasswordNovaSenha.getText());
+                pst.setString(2, jFormattedCPF.getText());
+                
                 
                 int adicionar = pst.executeUpdate();
                 
@@ -154,10 +155,13 @@ public class RecuperarSenha extends javax.swing.JFrame {
         setTitle("Recuperar Senha");
         setMaximumSize(new java.awt.Dimension(500, 340));
         setName("Tela de Recuperacao"); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Entre com o seu CPF no campo abaixo para Criar uma nova de acesso.");
+        jLabel1.setText("Entre com o seu CPF no campo abaixo para Criar um novo acesso.");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 18, -1, 37));
 
         jLabel4.setText("Seu CPF:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 88, 60, -1));
 
         try {
             jFormattedCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -165,6 +169,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFormattedCPF.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        getContentPane().add(jFormattedCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 78, 176, 36));
 
         btnPesq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconePesquisa.png"))); // NOI18N
         btnPesq.addActionListener(new java.awt.event.ActionListener() {
@@ -172,11 +177,13 @@ public class RecuperarSenha extends javax.swing.JFrame {
                 btnPesqActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPesq, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 68, 60, -1));
 
         iconeStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/iconeSIM.png"))); // NOI18N
         iconeStatus.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/LocadoraVeiculo/Icones/IconeNao.png"))); // NOI18N
         iconeStatus.setEnabled(false);
         iconeStatus.setOpaque(true);
+        getContentPane().add(iconeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 78, 30, 40));
 
         jPanelNovaSenha.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, java.awt.Color.gray));
         jPanelNovaSenha.setEnabled(false);
@@ -222,7 +229,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
                     .addGroup(jPanelNovaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTextFieldNomeUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                         .addComponent(jPasswordNovaSenha, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanelNovaSenhaLayout.setVerticalGroup(
             jPanelNovaSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,6 +251,8 @@ public class RecuperarSenha extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        getContentPane().add(jPanelNovaSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 136, -1, -1));
+
         btnSalvar.setText("SALVAR");
         btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +260,7 @@ public class RecuperarSenha extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 288, 113, 43));
 
         btnLimpar.setText("Limpar");
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -258,65 +268,9 @@ public class RecuperarSenha extends javax.swing.JFrame {
                 btnLimparActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 288, 113, 43));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4)
-                            .addComponent(btnPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(iconeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(jPanelNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(156, 156, 156)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(17, 17, 17)
-                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(7, 7, 7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnPesq)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(iconeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(8, 8, 8)
-                    .addComponent(jPanelNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(12, 12, 12)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(505, 370));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

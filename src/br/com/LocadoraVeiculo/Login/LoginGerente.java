@@ -34,12 +34,14 @@ public class LoginGerente extends javax.swing.JPanel {
               Tela_Area_de_Trab AreaTrab = new Tela_Area_de_Trab();
                 AreaTrab.setVisible(true); //abrindo o tela Pricipal
                 
+                jTextUsuarioGerente.setText(null);
+                jPasswordGerente.setText(null);
                                 
             }else{
                 
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
-                jTextUsuarioGerente.setText("");
-                jPasswordGerente.setText("");
+                jTextUsuarioGerente.setText(null);
+                jPasswordGerente.setText(null);
                 
             }
         } catch (Exception e) {

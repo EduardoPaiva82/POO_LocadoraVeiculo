@@ -37,12 +37,15 @@ public class LoginCliente extends javax.swing.JPanel {
             if (rs.next()) {
                 Tela_Area_Cliente areaCli = new Tela_Area_Cliente();
                 areaCli.setVisible(true); //abrindo o tela Pricipal
+               
+                jTextUsuarioCliente.setText(null);
+                jPasswordCliente.setText(null);
 
             } else {
 
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorreta!");
-                jTextUsuarioCliente.setText("");
-                jPasswordCliente.setText("");
+                jTextUsuarioCliente.setText(null);
+                jPasswordCliente.setText(null);
 
             }
         } catch (Exception e) {
@@ -74,7 +77,7 @@ public class LoginCliente extends javax.swing.JPanel {
         bntEntrarCliente = new javax.swing.JButton();
         jTextUsuarioCliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jblRecuperarSenha = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelImag = new javax.swing.JLabel();
 
@@ -118,16 +121,16 @@ public class LoginCliente extends javax.swing.JPanel {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(60, 40, 77, 25);
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(254, 58, 58));
-        jLabel3.setText("*Esqueci a minha Senha");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jblRecuperarSenha.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        jblRecuperarSenha.setForeground(new java.awt.Color(254, 58, 58));
+        jblRecuperarSenha.setText("*Esqueci a minha Senha");
+        jblRecuperarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel3MousePressed(evt);
+                jblRecuperarSenhaMousePressed(evt);
             }
         });
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(150, 220, 118, 13);
+        jPanel1.add(jblRecuperarSenha);
+        jblRecuperarSenha.setBounds(150, 220, 118, 13);
 
         jLabel2.setBackground(new java.awt.Color(238, 228, 217));
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -163,7 +166,7 @@ public class LoginCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jPasswordClienteKeyPressed
 
-    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+    private void jblRecuperarSenhaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jblRecuperarSenhaMousePressed
         
         String titulo = "Recuperar Senha";
         String menssagem = "Sr Cliente. Caso queira cadastrar uma nova senha\nNão têm problema, Clique em SIM!";
@@ -176,17 +179,17 @@ public class LoginCliente extends javax.swing.JPanel {
              g.setVisible(true);
          }
         
-    }//GEN-LAST:event_jLabel3MousePressed
+    }//GEN-LAST:event_jblRecuperarSenhaMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntEntrarCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelImag;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordCliente;
     private javax.swing.JTextField jTextUsuarioCliente;
+    private javax.swing.JLabel jblRecuperarSenha;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,6 +2,7 @@ package br.com.LocadoraVeiculo.Telas.Cadastros;
 
 import br.com.LocadoraVeiculo.ConexaoBD.ConexaoBD;
 import br.com.LocadoraVeiculo.classes.Cliente;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,9 +49,9 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ConexaoBD.conector();
     }
-
+//Metodo que serve para Adiconar um Cliente ao Banco de dados
     public void addCliente() {
-        String sql = "insert into Clientes(nomeCliente, dataNascimento, cpf, celular, endereco, nCNH, dataVencimento, dataPrimCNH)Values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into Clientes(nomeCliente, dataNascimento, cpf, celular, endereco, cidade, nCNH, dataVencimento, dataPrimCNH)Values(?,?,?,?,?,?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, jTextNomeCliente.getText());
@@ -58,9 +59,10 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
             pst.setString(3, jFormattedCPF.getText());
             pst.setString(4, jFormattedCelular.getText());
             pst.setString(5, jTextEndereco.getText());
-            pst.setString(6, jFormattedCNH.getText());
-            pst.setString(7, jFormattedDataPrimCNH.getText());
-            pst.setString(8, jFormattedDataVenciCNH.getText());
+            pst.setString(6, jComboBoxCidade.getSelectedItem().toString());
+            pst.setString(7, jFormattedCNH.getText());
+            pst.setString(8, jFormattedDataPrimCNH.getText());
+            pst.setString(9, jFormattedDataVenciCNH.getText());
 
             //caso os campos estiverem vazios isEmpty efeiturar o bloco de código abaixo;
             if (jTextNomeCliente.getText().isEmpty() || jFormattedDataNascimento.getText().isEmpty() || jFormattedCPF.getText().isEmpty() || jFormattedCelular.getText().isEmpty() || jFormattedCNH.getText().isEmpty() || jFormattedDataPrimCNH.getText().isEmpty() || jFormattedDataVenciCNH.getText().isEmpty()) {
@@ -77,11 +79,16 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                     jTextNomeCliente.setText(null);
                     jFormattedDataNascimento.setText(null);
                     jFormattedCelular.setText(null);
+                    jFormattedCPF.setText(null);
                     jTextEndereco.setText(null);
+                    jTextComplemento.setText(null);
+                    jTextNCasa.setText(null);
+                    jComboBoxCidade.setVisible(false);
                     jTextBairro.setText(null);
                     jFormattedCNH.setText(null);
                     jFormattedDataPrimCNH.setText(null);
                     jFormattedDataVenciCNH.setText(null);
+                    status.setEnabled(false);
                   
                 }
             }
@@ -91,7 +98,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
     }
     
     public void addLoginCliente(){
-        String sql = "insert into Usuario (Cpf, nomeLogin, senhaLogin) values (?,?,?)";
+        String sql = "insert into Usuario (CPF, nomeLogin, senhaLogin) values (?,?,?)";
         
         try {
             pst = conexao.prepareStatement(sql);
@@ -102,7 +109,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
             
 
             
-            if (jFormattedCPF.getText().isEmpty() || jTextNomeLogin.getText().isEmpty() || jTextSenhaLogin.getText().isEmpty()) {
+            if (jTextNomeLogin.getText().isEmpty() || jTextSenhaLogin.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha os Campos Obrigatórios!!!");
 
             } else {
@@ -113,7 +120,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
                 if (adicionadoLogin > 0) {
                     JOptionPane.showMessageDialog(null, "Login e Senha\nCadastrado Com Sucesso!!");
                     //Limpar o Formulario ao clicar em Salvar
-                    jFormattedCPF.setText(null);
+                   
                     jTextNomeLogin.setText(null);
                     jTextSenhaLogin.setText(null);
                 }
@@ -506,7 +513,7 @@ public class Tela_CadastroCliente extends javax.swing.JInternalFrame {
             } else {
 
                 JOptionPane.showMessageDialog(null, "Ops!! Você têm " + idade + " anos\nIdade Inválida!!");
-                jFormattedDataNascimento.setText("");
+                jFormattedDataNascimento.setText(null);
 
             }
         }
